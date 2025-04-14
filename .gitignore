@@ -1,0 +1,32 @@
+# Secrets
+.env
+
+# Claude Code
+.claude/
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Vector databases (rebuild from source)
+part1/chroma_v1/
+part1/chroma_v3/
+
+# Course task PDFs
+task1.pdf
+task2.pdf
+taks2.pdf
