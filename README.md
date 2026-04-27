@@ -1,10 +1,10 @@
 # Agentic RAG Pipeline
 
-A two-part project built during the nFactorial AI Engineering course — from a naive RAG baseline with RAGAS evaluation to a fully agentic multi-agent system with LangGraph and LangFuse observability.
+A RAG system with multi-agent orchestration, hybrid retrieval, and full observability — from baseline evaluation to agentic architecture.     
 
 ---
 
-## Architecture (Part 2)
+## Architectur
 
 Five specialized agents orchestrated by LangGraph, each responsible for one stage of the pipeline:
 
@@ -16,13 +16,13 @@ PDF → [Extraction Agent] → [Chunking Agent] → [Retrieval Agent] → [Gener
 
 ![Orchestrator Graph](part2/orchestrator_graph.png)
 
-| Agent | Role |
-|---|---|
-| **Extraction** | Tests pdfplumber, VLM (GPT-4o-mini), docling — picks best quality |
-| **Chunking** | Runs 5 strategies (recursive, small, large, by-section, adaptive) |
-| **Retrieval** | BM25 + dense + hybrid with alpha tuning (0.0–1.0) |
-| **Generator** | Grounded answer with confidence score |
-| **Reflector** | Scores relevance / faithfulness / completeness (1-10), retries if < 7 |
+| Agent          |  Role                                                                 |
+|----------------|-----------------------------------------------------------------------|
+| **Extraction** | Tests pdfplumber, VLM (GPT-4o-mini), docling — picks best quality     |
+| **Chunking**   | Runs 5 strategies (recursive, small, large, by-section, adaptive)     |
+| **Retrieval**  | BM25 + dense + hybrid with alpha tuning (0.0–1.0)                     |
+| **Generator**  | Grounded answer with confidence score                                 |
+| **Reflector**  | Scores relevance / faithfulness / completeness (1-10), retries if < 7 |
 
 The Extraction Agent is exposed as an A2A HTTP service (FastAPI, port 5010). All other agents run inline in the LangGraph graph.
 
@@ -123,7 +123,7 @@ agentic-rag/
 ├── .env.example
 ├── requirements.txt
 ├── data/
-│   ├── bsulp_2024_rus_pages_1_15.pdf   # source document
+│   ├── bsulp_2024_rus_pages_1_15.pdf    # source document
 │   └── ragas_questions.json             # 20 eval questions + ground truth
 ├── part1/                               # Baseline RAG + RAGAS eval
 │   ├── rag_pipeline.py
@@ -138,15 +138,9 @@ agentic-rag/
 │   ├── generator_agent.py
 │   ├── reflector_agent.py
 │   ├── orchestrator_graph.png
-│   └── extraction_agent/               # A2A FastAPI service
+│   └── extraction_agent/                # A2A FastAPI service
 │       ├── agent.py
 │       └── server.py
 └── frontend/
-    └── app.py                          # Streamlit demo
+    └── app.py                           # Streamlit demo
 ```
-
----
-
-## Course
-
-Built as homework for **nFactorial AI Engineering** — Module 7: RAG Systems.
