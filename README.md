@@ -4,7 +4,7 @@ A RAG system with multi-agent orchestration, hybrid retrieval, and full observab
 
 ---
 
-## Architectur
+## Architecture
 
 Five specialized agents orchestrated by LangGraph, each responsible for one stage of the pipeline:
 
@@ -66,18 +66,18 @@ pip install -r requirements.txt
 ```bash
 # Step 1: Run naive RAG on 20 questions, traces go to LangFuse
 cd part1
-python rag_pipeline.py        # → results_v1.json
+python rag_pipeline.py               # → results_v1.json
 
 # Step 2: RAGAS evaluation (faithfulness + context precision)
-python ragas_eval.py          # → eval_v1.json, scores attached to LangFuse traces
+python ragas_eval.py                 # → eval_v1.json, scores attached to LangFuse traces
 
 # Step 3: Prompt engineering experiment (v2)
 # Create "rag-system-prompt" in LangFuse Prompt Management UI first
-python prompt_management.py 3 # → results_v2.json
+python prompt_management.py 3        # → results_v2.json
 
 # Step 4: Embedding experiment (v3: MiniLM + chunk=1000)
-python prompt_management.py 4 # → results_v3.json
-python ragas_eval.py          # prints V1/V2/V3 comparison table
+python prompt_management.py 4        # → results_v3.json
+python ragas_eval.py                 # prints V1/V2/V3 comparison table
 ```
 
 ### Part 2 — Agentic RAG
